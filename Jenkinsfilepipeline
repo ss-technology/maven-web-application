@@ -1,7 +1,7 @@
 node{
     echo "Build Number is: ${env.BUILD_NUMBER}"
 echo "Job name is: ${env.JOB_NAME}"
-// echo "Node name is: ${env.NODE_NAME}"
+echo "Node name is: ${env.NODE_NAME}"
 
 def mavenHome = tool name: "maven3.8.6"
 
@@ -14,7 +14,7 @@ git branch: 'development', credentialsId: '1aa319e0-19ff-4bf2-8f20-5463deb7448b'
 stage('Build'){
 sh "${mavenHome}/bin/mvn clean package"
 }
-/*
+
   stage('ExecuteSonarQubeReport'){
 sh "${mavenHome}/bin/mvn sonar:sonar"
 }
@@ -26,5 +26,5 @@ sshagent(['8bc5cb8e-6760-465a-be29-1e9c01e9bb8c']) {
     sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.233.245.228:/opt/apache-tomcat-9.0.68/webapps/"
 }
 }
-  */  
-}//node closing
+   
+}
